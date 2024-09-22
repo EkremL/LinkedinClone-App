@@ -12,6 +12,12 @@ dotenv.config();
 const PORT = process.env.PORT || 5000;
 
 const app = express();
+app.use(
+  cors({
+    origin: "http://localhost:5173", // replace with your frontend URL
+    credentials: true,
+  })
+);
 //payload is too large
 app.use(express.json({ limit: "5mb" }));
 app.use(cookieParser());
