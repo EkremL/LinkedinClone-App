@@ -32,7 +32,7 @@ export const signup = async (req, res) => {
 
     await user.save();
 
-    const token = jwt.sign({ UserId: user._id }, process.env.JWT_SECRET, {
+    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, {
       expiresIn: "3d",
     });
     res.cookie("jwt-linkedin", token, {

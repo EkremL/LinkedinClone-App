@@ -7,17 +7,25 @@ import notificationRoutes from "./routes/notification.route.js";
 import connectionRoutes from "./routes/connection.route.js";
 import { connectDB } from "./lib/db.js";
 import cookieParser from "cookie-parser";
+import cors from "cors";
+import morgan from "morgan";
 
 dotenv.config();
 const PORT = process.env.PORT || 5000;
 
 const app = express();
+
+app.use(morgan("dev"));
 app.use(
   cors({
-    origin: "http://localhost:5173", // replace with your frontend URL
+    origin: "http://localhost:5173", // Frontend'in çalıştığı URL
     credentials: true,
   })
 );
+// {
+//   origin: "http://localhost:5173", // replace with your frontend URL
+//   credentials: true,
+// }
 //payload is too large
 app.use(express.json({ limit: "5mb" }));
 app.use(cookieParser());
