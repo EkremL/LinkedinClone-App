@@ -71,6 +71,5 @@ export const sendConnectionAcceptedEmail = async (
       ),
       category: "connection_accepted",
     });
-    console.log("Connection Email sent successfully", response);
   } catch (error) {}
 };

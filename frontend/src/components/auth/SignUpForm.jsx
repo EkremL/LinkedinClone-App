@@ -24,7 +24,7 @@ const SignUpForm = () => {
     },
     onSuccess: () => {
       toast.success("Account created successfully");
-      queryClient.invalidateQueries({ queryKey: ["authUser"] });
+      queryClient.invalidateQueries({ queryKey: ["authUser"] }); //succes durumunda queryClient sayesinde sayfa yenileme işlemi yapılır ve ekranda manuel olarak yenilemeden gözükür
     },
     onError: (err) => {
       toast.error(err.response.data.message || "Something went wrong");

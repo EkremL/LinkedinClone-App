@@ -26,6 +26,8 @@ const Navbar = () => {
     },
   });
 
+  // console.log(notifications, connectionRequests);
+
   const unreadNotificationCount = notifications?.data.filter(
     (notif) => !notif.read
   ).length;
