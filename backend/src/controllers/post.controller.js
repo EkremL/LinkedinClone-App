@@ -118,7 +118,7 @@ export const createComment = async (req, res) => {
       await newNotification.save();
       //!send email
       try {
-        const postUrl = "process.env.CLIENT_URL" + /post/ + postId;
+        const postUrl = process.env.CLIENT_URL + /post/ + postId;
         await sendCommentNotificationEmail(
           post.author.email,
           post.author.name,
