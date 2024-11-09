@@ -35,7 +35,7 @@ app.use(
 app.use(express.json({ limit: "5mb" }));
 app.use(cookieParser());
 
-app.use(express.static(path.join(__dirname, "../../frontend/dist")));
+app.use(express.static(path.resolve(__dirname, "../../frontend/dist")));
 
 //!Routes
 app.use("/api/auth", authRoutes);
