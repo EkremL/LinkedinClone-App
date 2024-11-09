@@ -9,6 +9,7 @@ import { connectDB } from "./lib/db.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import morgan from "morgan";
+const path = require("path");
 
 dotenv.config();
 const PORT = process.env.PORT || 5000;
@@ -30,12 +31,18 @@ app.use(
 app.use(express.json({ limit: "5mb" }));
 app.use(cookieParser());
 
+app.use(express.static(path.join(__dirname, "../../frontend/dist")));
+
 //!Routes
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/posts", postRoutes);
 app.use("/api/notifications", notificationRoutes);
 app.use("/api/connections", connectionRoutes);
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../../frontend/dist", "index.html"));
+});
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
