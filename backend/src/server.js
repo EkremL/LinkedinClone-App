@@ -9,7 +9,7 @@ import { connectDB } from "./lib/db.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import morgan from "morgan";
-const path = require("path");
+import path from "path";
 
 dotenv.config();
 const PORT = process.env.PORT || 5000;
